@@ -1,86 +1,16 @@
-# Setup
+# Developing with Terrastories
 
 ## Table of Contents
 
-1. [Docker prerequisites](#docker-prerequisites)
+1. [Development](#development)
 
-2. [Setup and running the server](#Setup-and-running-the-server)
+2. [Importing data into Terrastories](#importing-data-into-terrastories)
 
-3. [Make it Go](#Make-It-Go)
+3. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
 
-6. [Common environment errors & gotchas](#having-troubles-check-our-common-errors--gotchas)
+3. [Adding languages to Terrastories](#adding-languages-to-terrastories)
 
-5. [Development](#development)
-
-6. [Backup and restore the Terrastories database](#backup-and-restore-the-terrastories-database)
-
-7. [Importing data into Terrastories](#importing-data-into-terrastories)
-
-8. [Adding languages to Terrastories](#adding-languages-to-terrastories)
-
-9. [Setting up your Development Environment](#setting-up-your-development-environment)
-
-## Docker Prerequisites
-
-Install docker. On linux, you may have to install docker-compose separately.
-
-- https://docs.docker.com/install/
-- https://docs.docker.com/compose/install/
-
-On Windows, all terminal docker commands need to be run using Windows PowerShell, not Command Prompt.
-PowerShell comes with Windows.
-
-On Linux, users should run all docker commands with `sudo` or check the [official documentation](https://docs.docker.com/install/linux/linux-postinstall/) to manage Docker as a non-root user.
-
-## Setup and running the server
-
-First update your `.env` file using `.env.example` as a reference. You will need a Mapbox token. You can obtain one for free by signing up [on Mapbox](https://mapbox.com/signup)
-
-On a fresh clone of this repo, run:
-
-```
-$ docker-compose build
-```
-
-This will download and build all the docker images used in this project. Upon completion you should see output similar to:.
-
-```
-...
-Successfully tagged terrastories:latest
-```
-
-## Make It Go
-
-Run the following:
-
-```
-$ docker-compose up
-```
-
-Use `ctrl-c` to stop.
-
-
-The first time, open another terminal and run the following command to setup:
-
-```
-$ docker-compose exec web bin/setup
-```
-
-This command runs a setup script that lives in `bin/setup`, which does:
-
-- install ruby gems
-- install javascript packages
-- setup database
-
-See the script file for the details.
-
-Once rails fully starts up, you can view the running app at `localhost:3000`
-
-## Having troubles? Check our common errors & gotchas
-
-If you run into any problems getting the application to start, please check out a list of common errors & gotchas that we have put together [here](https://docs.google.com/document/d/1uSbQl56rAh3AA8Xm7IRZ8qepAMVN55ZOkAqQ8Kh423E/edit)!
-
-Additionally, feel free to join us in Slack [here](https://t.co/kUtI3lnpW1) and find us in the channel #terrastories :) You can also post an issue and label it with `question`. We will get back to you ASAP!
+4. [Setting up your development environment](#setting-up-your-development-environment)
 
 ## Development
 
@@ -101,6 +31,7 @@ environment. Always use the rails container instead.**
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
 
+<<<<<<< HEAD:SETUP.md
 ## Running Terrastories in Offline Mode
 
 Terrastories offline mode is generally used in the field, when there is no access to the internet.
@@ -116,23 +47,26 @@ script/run_offline_maps.sh
 ```
 
 ## Backup and restore the Terrastories database
+=======
+## Importing data into Terrastories
+>>>>>>> d696d79027e48440873b973218c0f2999141a897:DEVELOPMENT.md
 
-Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal.
+In the Terrastories back end, it is possible to import data in bulk using a CSV importer.
 
-Backup the DB with:
+The data should be imported in the following order: Places, Speakers, and then Stories.
 
-```
-docker run --rm -v "terrastories_postgres_data:/pgdata" busybox tar -cvzf - -C /pgdata . >db-backup.tgz 
-```
+To prepare CSVs for importing, use the following workflow to ensure that character diacritics are properly imported:
 
-Restore a backup with:
+-If the file is already an .xlsx, go to Google Sheets and File->Import from the menu. Then import the file.
+-Otherwise create the file directly in Google Sheets. Make sure the file has a row for headers.
+-Go to File -> Download As-> Comma Separated Values, and save the file to your machine.
+-This CSV should be properly encoded as UTF-8. It's best to verify this with Notepad++ instead of Excel if you are on a Windows machine.
 
-```
-docker volume rm terrastories_postgres_data
-docker run --rm -i -v "terrastories_postgres_data:/pgdata" busybox tar -xvzf - -C /pgdata <db-backup.tgz
-```
+## Backup and restore the Terrastories database
 
-**For Windows** applications like PowerShell (PS), a slightly different syntax is needed. 
+Terrastories stores Places, Speakers, and Stories in a database (Postgres DB). it is possible to back these data up and restore them by running lines of code in a bash terminal. 
+
+Using Powershell:
 
 Backup the DB in PS with:
 
@@ -147,19 +81,6 @@ docker run --rm -i -v "terrastories_postgres_data:/pgdata" -v "$(pwd):/source/" 
 ```
 
 Note: the above code is assuming your build is called `terrastories`. It may be necessary to run `docker volume ls` to get the right Docker container name ending with `_postgres_data`.
-
-## Importing data into Terrastories
-
-In the Terrastories back end, it is possible to import data in bulk using a CSV importer.
-
-The data should be imported in the following order: Places, Speakers, and then Stories.
-
-To prepare CSVs for importing, use the following workflow to ensure that character diacritics are properly imported:
-
--If the file is already an .xlsx, go to Google Sheets and File->Import from the menu. Then import the file.
--Otherwise create the file directly in Google Sheets. Make sure the file has a row for headers.
--Go to File -> Download As-> Comma Separated Values, and save the file to your machine.
--This CSV should be properly encoded as UTF-8. It's best to verify this with Notepad++ instead of Excel if you are on a Windows machine.
 
 ## Adding languages to Terrastories
 
