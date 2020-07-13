@@ -4,13 +4,15 @@
 
 1. [Development](#development)
 
-2. [Importing data into Terrastories](#importing-data-into-terrastories)
+2. [Running Terrastories in Offline Mode](#running-terrastories-in-offline-mode)
 
-3. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
+3. [Importing data into Terrastories](#importing-data-into-terrastories)
 
-3. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+4. [Back up and restore Terrastories database](#backup-and-restore-the-Terrastories-database)
 
-4. [Setting up your development environment](#setting-up-your-development-environment)
+5. [Adding languages to Terrastories](#adding-languages-to-terrastories)
+
+6. [Setting up your development environment](#setting-up-your-development-environment)
 
 ## Development
 
@@ -31,7 +33,6 @@ environment. Always use the rails container instead.**
 Any changes to source files should be made directly in your local filesystem under the
 `/opt/terrastories` directory using your preferred editing tools.
 
-<<<<<<< HEAD:SETUP.md
 ## Running Terrastories in Offline Mode
 
 Terrastories offline mode is generally used in the field, when there is no access to the internet.
@@ -46,10 +47,7 @@ And instead of running docker-compose up, run
 script/run_offline_maps.sh
 ```
 
-## Backup and restore the Terrastories database
-=======
 ## Importing data into Terrastories
->>>>>>> d696d79027e48440873b973218c0f2999141a897:DEVELOPMENT.md
 
 In the Terrastories back end, it is possible to import data in bulk using a CSV importer.
 
