@@ -5,6 +5,7 @@ en:
   back_to_welcome: "Back to Welcome Page"
   close: Close
   default: default
+  description: "Description"
   enter: "Enter Site"
   filter_stories: "Filter stories"
   forgot_password: "Forgot your password?"

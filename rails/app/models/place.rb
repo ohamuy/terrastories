@@ -48,6 +48,7 @@ class Place < ApplicationRecord
       name: name,
       region: region,
       type_of_place: type_of_place,
+      description: description,
       photo_url: photo_url,
       stories: stories
     )

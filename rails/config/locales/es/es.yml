@@ -5,6 +5,7 @@ es:
   back_to_welcome: "Volver a la página de inicio"
   close: "Cerrar"
   default: "default"
+  description: "Descripción"
   enter: "Ingresar"
   filter_stories: "Filtrar historias"
   forgot_password: "¿Olvidaste tu contraseña?"

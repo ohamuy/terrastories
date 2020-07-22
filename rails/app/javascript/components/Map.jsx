@@ -99,10 +99,12 @@ export default class Map extends Component {
           <div class="ts-markerPopup-content">
             <img src=${marker.properties.photo_url} />
             <div>
-              <div>${I18n.t("region")}: ${marker.properties.region}</div>
-              <div>${I18n.t("place_type")}: ${
-            marker.properties.type_of_place
-          }</div>
+              <div><span class="ts-markerPopup-title">${I18n.t("description")}:</span> 
+                ${marker.properties.description}</div>
+              <div><span class="ts-markerPopup-title">${I18n.t("place_type")}: </span>${
+                marker.properties.type_of_place}</div>
+              <div><span class="ts-markerPopup-title">${I18n.t("region")}: </span>
+                ${marker.properties.region}</div>
             </div>
           </div>`;
         } else {
@@ -126,10 +128,12 @@ export default class Map extends Component {
           return `<h1>${marker.properties.name}</h1>
           <div class="ts-markerPopup-content">
             <div>
-              <div>${I18n.t("region")}: ${marker.properties.region}</div>
-              <div>${I18n.t("place_type")}: ${
-            marker.properties.type_of_place
-          }</div>
+            <div><span class="ts-markerPopup-title">${I18n.t("description")}:</span> 
+            ${marker.properties.description}</div>
+            <div><span class="ts-markerPopup-title">${I18n.t("place_type")}: </span>${
+            marker.properties.type_of_place}</div>
+            <div><span class="ts-markerPopup-title">${I18n.t("region")}: </span>
+            ${marker.properties.region}</div>
             </div>
           </div>`;
         } else {

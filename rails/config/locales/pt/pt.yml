@@ -2,6 +2,7 @@ pt:
   admin_page: "Página de administração"
   back_to_map: "Volta ao mapa"
   default: "padrão"
+  description: "descrição"
   language: "Idioma"
   map: "Isto é um... mapa?"
   hello: "Olá"

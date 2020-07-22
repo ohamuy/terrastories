@@ -5,6 +5,7 @@ ja:
   back_to_welcome: "入り口に戻る"
   close: "閉じる"
   default: "デフォルト"
+  description: "解説"
   enter: "入る"
   filter_stories: "フィルタ"
   forgot_password: "パスワードを忘れましたか？"
